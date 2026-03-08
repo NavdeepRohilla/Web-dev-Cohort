@@ -1,4 +1,4 @@
-/*const crewMembers = 40
+const crewMembers = 40
 const fuelTons = 142.2
 const lightSpeed = 29_888_999
 const infiniteRange = Infinity
@@ -19,8 +19,6 @@ const countdown = "007"
 
 console.log(parseInt(countdown));
 console.log(parseInt("111" , 2));
-
-*/
 
 const thrustForce = 4.464;
 
