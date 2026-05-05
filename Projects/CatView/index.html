@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CatSnap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="card" aria-labelledby="app-title">
+        <p class="eyebrow">Random Cat Gallery</p>
+        <h1 id="app-title">CatView 🐱</h1>
+        <p class="subtitle">
+          Fresh feline photos from FreeAPI, one click at a time.
+        </p>
+
+        <div class="image-panel">
+          <div
+            class="image-stage"
+            id="image-stage"
+            aria-live="polite"
+            aria-busy="true"
+          >
+            <img
+              id="cat-image"
+              class="cat-image"
+              src=""
+              alt="A random cat from FreeAPI"
+            />
+
+            <div class="status-overlay" id="status-overlay">
+              <div class="spinner" aria-hidden="true"></div>
+              <p id="status-text">Fetching a cat...</p>
+            </div>
+          </div>
+
+          <p class="breed-label" id="breed-label">Waiting for the first cat...</p>
+        </div>
+
+        <button type="button" class="refresh-button" id="refresh-button">
+          Show Another Cat
+        </button>
+
+        <p class="error-message" id="error-message" role="alert" hidden></p>
+      </section>
+    </main>
+
+    <footer class="app-footer">Powered by FreeAPI</footer>
+  </body>
+</html>
