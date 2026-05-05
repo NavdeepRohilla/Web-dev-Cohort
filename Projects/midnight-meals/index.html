@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midnight Meals</title>
+    <meta
+      name="description"
+      content="Browse delicious meals with a responsive dark-themed listing app."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Curated from around the world</p>
+          <h1>Midnight Meals</h1>
+          <p class="hero__text">
+            Search through a rich collection of global recipes, discover new
+            cuisines, and open any card for the full details.
+          </p>
+        </div>
+
+        <div class="hero__panel">
+          <label class="search" for="searchInput">
+            <span class="search__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <path
+                  d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0-2a8.5 8.5 0 1 0 5.33 15.12l4.52 4.52 1.41-1.41-4.52-4.52A8.5 8.5 0 0 0 10.5 2Z"
+                />
+              </svg>
+            </span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search meals by name..."
+              autocomplete="off"
+            />
+          </label>
+
+          <div class="hero__stats" aria-label="App statistics">
+            <article class="stat-card">
+              <span class="stat-card__label">Meals Loaded</span>
+              <strong id="mealCount">0</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-card__label">Visible Results</span>
+              <strong id="resultCount">0</strong>
+            </article>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="status-area" aria-live="polite" aria-atomic="true">
+          <div id="loadingState" class="loading-state">
+            <span class="spinner" aria-hidden="true"></span>
+            <p>Loading meals from the kitchen...</p>
+          </div>
+
+          <div id="errorState" class="feedback feedback--error hidden" role="alert">
+            <h2>Unable to load meals</h2>
+            <p id="errorMessage">
+              Something went wrong while fetching data. Please try again.
+            </p>
+            <button id="retryButton" class="action-button" type="button">
+              Try Again
+            </button>
+          </div>
+
+          <div id="emptyState" class="feedback hidden">
+            <h2>No meals found</h2>
+            <p>Try another search term to discover more recipes.</p>
+          </div>
+        </section>
+
+        <section
+          id="mealsGrid"
+          class="meals-grid"
+          aria-label="Meals listing"
+        ></section>
+      </main>
+    </div>
+
+    <div
+      id="mealModal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal__backdrop" data-close-modal="true"></div>
+      <div class="modal__panel">
+        <button
+          id="modalCloseButton"
+          class="modal__close"
+          type="button"
+          aria-label="Close meal details"
+        >
+          ×
+        </button>
+
+        <div class="modal__media">
+          <img id="modalImage" src="" alt="" />
+        </div>
+
+        <div class="modal__content">
+          <div class="modal__header">
+            <div>
+              <p id="modalMeta" class="modal__meta"></p>
+              <h2 id="modalTitle"></h2>
+            </div>
+            <button id="modalFavoriteButton" class="favorite-button" type="button">
+              <span aria-hidden="true">♡</span>
+              <span class="sr-only">Toggle favorite</span>
+            </button>
+          </div>
+
+          <p id="modalInstructions" class="modal__instructions"></p>
+
+          <div class="modal__section">
+            <h3>Ingredients</h3>
+            <ul id="modalIngredients" class="ingredients-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="mealCardTemplate">
+      <article class="meal-card">
+        <button class="favorite-button meal-card__favorite" type="button">
+          <span aria-hidden="true">♡</span>
+          <span class="sr-only">Toggle favorite</span>
+        </button>
+
+        <div class="meal-card__image-wrap">
+          <img class="meal-card__image" src="" alt="" loading="lazy" />
+        </div>
+
+        <div class="meal-card__body">
+          <div class="meal-card__topline">
+            <span class="pill meal-card__category"></span>
+            <span class="meal-card__area"></span>
+          </div>
+
+          <h2 class="meal-card__title"></h2>
+          <p class="meal-card__instructions"></p>
+
+          <button class="meal-card__details action-button" type="button">
+            View Details
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
