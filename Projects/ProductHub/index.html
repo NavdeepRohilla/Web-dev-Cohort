@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopGrid</title>
+    <link rel="preconnect" href="https://api.freeapi.app" />
+    <link rel="preconnect" href="https://cdn.dummyjson.com" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-shell">
+        <a class="brand" href="#" aria-label="ShopGrid home">🛍️ ShopGrid</a>
+
+        <div class="header-actions">
+          <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode">
+            <span aria-hidden="true">☾</span>
+          </button>
+          <button class="cart-button" type="button" aria-label="Cart items">
+            Cart
+            <span id="cartCount" class="cart-count" aria-live="polite">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="toolbar" aria-label="Product controls">
+        <div class="search-field">
+          <label for="searchInput">Search products</label>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search by product name..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="select-field">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+          </select>
+        </div>
+
+        <div class="select-field">
+          <label for="sortSelect">Sort</label>
+          <select id="sortSelect">
+            <option value="default">Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="status-panel" id="statusPanel" hidden aria-live="polite"></section>
+
+      <section class="product-grid" id="productGrid" aria-live="polite"></section>
+
+      <div class="load-more-row">
+        <button class="primary-button" id="loadMoreButton" type="button">Load More Products</button>
+      </div>
+    </main>
+
+    <div class="modal" id="productModal" hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close product details">
+          ×
+        </button>
+        <div class="modal-image-wrap">
+          <img id="modalImage" src="" alt="" />
+        </div>
+        <div class="modal-content">
+          <p class="eyebrow" id="modalCategory"></p>
+          <h2 id="modalTitle"></h2>
+          <p id="modalDescription"></p>
+          <dl class="product-facts">
+            <div>
+              <dt>Price</dt>
+              <dd id="modalPrice"></dd>
+            </div>
+            <div>
+              <dt>Rating</dt>
+              <dd id="modalRating"></dd>
+            </div>
+            <div>
+              <dt>Stock</dt>
+              <dd id="modalStock"></dd>
+            </div>
+          </dl>
+          <button class="primary-button" id="modalCartButton" type="button">Add to Cart</button>
+        </div>
+      </article>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
