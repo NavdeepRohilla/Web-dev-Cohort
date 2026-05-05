@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JokeBox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Decorative background glows for depth. -->
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+  <main class="app">
+    <!-- Main joke card. -->
+    <section class="card" aria-live="polite">
+      <header class="card-header">
+        <h1>😂 JokeBox</h1>
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
+      </header>
+
+      <p id="category" class="category" hidden></p>
+
+      <!-- Joke container gets fade transition classes from JS. -->
+      <div id="jokeWrap" class="joke-wrap visible">
+        <p id="jokeSetup" class="joke-setup"></p>
+        <p id="jokePunchline" class="joke-punchline"></p>
+      </div>
+
+      <p id="status" class="status" role="status" hidden>Loading a fresh joke...</p>
+      <p id="error" class="error" role="alert" hidden></p>
+
+      <div class="actions">
+        <button id="getJokeBtn" class="primary-btn" type="button">Get Another Joke</button>
+        <button id="copyBtn" class="secondary-btn" type="button">Copy Joke</button>
+        <button id="saveBtn" class="secondary-btn" type="button">Save Joke</button>
+      </div>
+
+      <footer class="saved-meta">
+        <span>Saved Jokes:</span>
+        <strong id="savedCount">0</strong>
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
