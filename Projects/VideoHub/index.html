@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TubeLite</title>
+    <link rel="preconnect" href="https://api.freeapi.app" />
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <!-- Sticky top bar with branding, search, and theme controls. -->
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="TubeLite home">
+        <span aria-hidden="true">📺</span>
+        <span>TubeLite</span>
+      </a>
+
+      <form class="search" id="searchForm" role="search">
+        <label class="sr-only" for="searchInput">Search videos</label>
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search loaded videos"
+          autocomplete="off"
+        />
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Switch theme"
+        aria-pressed="false"
+      >
+        <span aria-hidden="true">◐</span>
+      </button>
+    </header>
+
+    <!-- Main application layout: compact navigation plus the video feed. -->
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="nav-item active" href="#">
+          <span aria-hidden="true">⌂</span>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span aria-hidden="true">↗</span>
+          <span>Trending</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span aria-hidden="true">▶</span>
+          <span>Subscriptions</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span aria-hidden="true">◷</span>
+          <span>History</span>
+        </a>
+      </aside>
+
+      <main class="content">
+        <section class="chip-row" aria-label="Category filters">
+          <button class="chip active" type="button" data-filter="all">All</button>
+          <button class="chip" type="button" data-filter="javascript">JavaScript</button>
+          <button class="chip" type="button" data-filter="react">React</button>
+          <button class="chip" type="button" data-filter="nextjs">Next.js</button>
+          <button class="chip" type="button" data-filter="cloud">Cloud</button>
+          <button class="chip" type="button" data-filter="programming">Programming</button>
+        </section>
+
+        <section
+          class="status-message hidden"
+          id="statusMessage"
+          aria-live="polite"
+        ></section>
+
+        <section
+          class="video-grid"
+          id="videoGrid"
+          aria-live="polite"
+          aria-busy="false"
+        ></section>
+
+        <div class="actions">
+          <button class="load-more" id="loadMoreBtn" type="button">
+            Load More
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Video modal. JavaScript injects the active YouTube embed URL. -->
+    <div
+      class="modal hidden"
+      id="videoModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-panel">
+        <div class="modal-header">
+          <h2 id="modalTitle">Now playing</h2>
+          <button type="button" class="modal-close" data-close-modal aria-label="Close video">
+            ×
+          </button>
+        </div>
+        <div class="player-shell">
+          <iframe
+            id="videoPlayer"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
