@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuoteFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header keeps the product identity, theme control, and daily highlight in the first view. -->
+    <header class="app-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#" aria-label="QuoteFlow home">✨ QuoteFlow</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <span id="themeIcon" aria-hidden="true">☾</span>
+        </button>
+      </nav>
+
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Fresh thoughts, neatly collected.</p>
+          <h1 id="heroTitle">✨ QuoteFlow</h1>
+          <p class="hero-subtitle">Find a sharper way to say what matters.</p>
+        </div>
+
+        <article class="daily-quote" id="quoteOfTheDay" aria-live="polite">
+          <span class="daily-label">Quote of the Day</span>
+          <p class="daily-text">Loading a standout quote...</p>
+          <cite class="daily-author"></cite>
+        </article>
+      </section>
+    </header>
+
+    <main class="app-shell">
+      <!-- Search, author filtering, and favorite filtering all run against the quotes already loaded. -->
+      <section class="controls" aria-label="Quote filters">
+        <label class="search-field" for="searchInput">
+          <span class="visually-hidden">Search quotes</span>
+          <input id="searchInput" type="search" placeholder="Search quotes or authors" autocomplete="off" />
+        </label>
+
+        <label class="select-field" for="authorFilter">
+          <span class="visually-hidden">Filter by author</span>
+          <select id="authorFilter">
+            <option value="">All authors</option>
+          </select>
+        </label>
+
+        <button class="filter-button" id="favoritesFilter" type="button" aria-pressed="false">
+          Favorites
+        </button>
+      </section>
+
+      <section class="status-panel hidden" id="errorPanel" role="alert">
+        <strong>Something went sideways.</strong>
+        <span id="errorText">We could not fetch quotes right now.</span>
+        <button id="retryButton" type="button">Try again</button>
+      </section>
+
+      <section class="quote-grid" id="quoteGrid" aria-live="polite"></section>
+
+      <section class="empty-state hidden" id="emptyState">
+        <h2>No quotes found</h2>
+        <p>Try a different keyword or author.</p>
+      </section>
+
+      <div class="skeleton-grid hidden" id="skeletonGrid" aria-hidden="true">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+
+      <div class="load-more-wrap">
+        <button class="load-more" id="loadMoreButton" type="button">Load More</button>
+      </div>
+    </main>
+
+    <!-- The quote card template is cloned in JavaScript so quote data can be inserted safely. -->
+    <template id="quoteCardTemplate">
+      <article class="quote-card">
+        <button class="favorite-button" type="button" aria-label="Add to favorites" aria-pressed="false">
+          ☆
+        </button>
+        <blockquote class="quote-text"></blockquote>
+        <footer class="quote-footer">
+          <cite class="quote-author"></cite>
+          <button class="copy-button" type="button">Copy</button>
+        </footer>
+      </article>
+    </template>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
